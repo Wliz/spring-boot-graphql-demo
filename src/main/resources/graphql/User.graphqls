@@ -34,10 +34,4 @@ type User {
 }
 
 scalar Wlz
-#scalar YearMonthDay
-#scalar GraphQLLocalDate
 
-#input UserDto {
-#    userName: String!
-#    phone: String
-#}
