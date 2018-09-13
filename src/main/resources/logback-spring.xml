@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>demo</contextName>
+    <property name="log_path" value="logs" />
+
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到文件-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_path}/demo.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/demo.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--<maxFileSize>30MB</maxFileSize>-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file"/>
+    </root>
+
+    <logger name="com.wlz.demo" level="DEBUG" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+    <!-- 测试环境+开发环境. -->
+    <springProfile name="test,dev">
+        <logger name="com.wlz.demo" level="INFO" />
+    </springProfile>
+    <!-- 生产环境 -->
+    <springProfile name="prod">
+        <logger name="com.wlz.demo" level="ERROR"/>
+    </springProfile>
+</configuration>
