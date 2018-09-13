@@ -1,0 +1,36 @@
+#schema {
+#    query: Query
+#    mutation: Mutation
+#}
+
+extend type Query {
+    findAllCities : [City]
+}
+
+extend type Mutation {
+
+}
+
+type City {
+    name : String
+    level : Int
+    areaCode : String
+}
+
+#private Long id;
+#
+#private String name;
+#
+#private Integer level;
+#
+#private String areaCode;
+#
+#private String parentCode;
+#
+#private Integer status;
+#
+#private Date createdAt;
+#
+#private Date updatedAt;
+#
+#private Integer parentId;

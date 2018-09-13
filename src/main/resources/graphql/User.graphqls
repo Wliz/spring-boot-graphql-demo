@@ -1,0 +1,43 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+# 查询
+type Query {
+    findAllUsers : [User]
+}
+
+enum status { NORMAL, TEST }
+
+# 增删改
+type Mutation {
+    createUser(userName : String!, phone : String) : User!
+    updateUser(id : Long!, userName : String, phone : String) : User!
+}
+
+interface Character{
+    username : String
+}
+
+type User {
+#    id : UUID
+    username : String
+    phone : String
+    status : String
+#    createdAt : String
+#    createdAt(dateFetcher : String = "yyyy-MM-dd") : String
+    createdAt : Wlz
+    updatedAt : Wlz
+#    createdAt : GraphQLLocalDate
+#    createdAt : YearMonthDay
+}
+
+scalar Wlz
+#scalar YearMonthDay
+#scalar GraphQLLocalDate
+
+#input UserDto {
+#    userName: String!
+#    phone: String
+#}

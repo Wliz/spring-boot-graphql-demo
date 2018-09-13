@@ -1,0 +1,7 @@
+# 数据库链接配置
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/graphql_demo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    username: root
+    password: 18336072136

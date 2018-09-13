@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wlz.demo.dao.UserMapper">
+
+  <resultMap id="BaseResultMap" type="com.wlz.demo.domain.User">
+    <result column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="city_id" jdbcType="BIGINT" property="cityId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="company_id" jdbcType="INTEGER" property="companyId" />
+  </resultMap>
+    <sql id="base_columns">
+        id, username, phone, city_id, status, company_id, created_at, updated_at
+    </sql>
+    <select id="findId" resultMap="BaseResultMap" parameterType="long" >
+        SELECT
+        <include refid="base_columns"/>
+        FROM user
+        WHERE ID = #{id,jdbcType=BIGINT}
+    </select>
+    <select id="findAll" resultType="com.wlz.demo.domain.User">
+        SELECT * FROM user
+    </select>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.wlz.demo.domain.User">
+    UPDATE user
+    <set>
+      <if test="username != null">
+        username = #{username, jdbcType=VARCHAR}
+      </if>
+      <if test="phone != null">
+        phone = #{phone, jdbcType=VARCHAR}
+      </if>
+      <if test="city_id != null">
+        city_id = #{city_id, jdbcType=BIGINT}
+      </if>
+      <if test="status != null">
+        status = #{status, jdbcType=INTEGER}
+      </if>
+      <if test="company_id != null">
+        company_id = #{company_id, jdbcType=INTEGER}
+      </if>
+      <if test="(username != null) || (phone != null) || (city_id != null) || (status != null) || (company_id != null)">
+        updated_at = now()
+      </if>
+      where id = #{id, jdbcType=BIGINT}
+    </set>
+  </update>
+  <insert id="insert" parameterType="com.wlz.demo.domain.User">
+    insert into user (id, username, phone, 
+      city_id, status, created_at, 
+      updated_at, company_id)
+    values (#{id,jdbcType=BIGINT}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=BIGINT}, #{status,jdbcType=INTEGER},
+        #{createdAt,jdbcType=TIMESTAMP},
+      #{updatedAt,jdbcType=TIMESTAMP},
+      #{companyId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wlz.demo.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

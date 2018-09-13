@@ -1,0 +1,52 @@
+# 数据库链接配置
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/graphql_demo?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+    username: root
+    password: 18336072136
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 配置redis
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 9
+        max-wait: 2
+    timeout: 2
+
+# 配置mybatis，扫描实体类路径
+mybatis:
+  type-aliases-package: com.wlz.demo.domain
+  # mapper映射文件位置（非注解形式sql）
+  mapper-locations: classpath:mapper/*.xml
+  # mybaties xml配置文件地址
+  config-location: classpath:mybatis-config.xml
+
+# graphql api
+graphql:
+  servlet:
+    mapping: /graphql
+    enabled: true
+    corsEnabled: true
+  tools:
+    schemaLocationPattern: "**/*.graphqls"
+
+#graphiql:
+#  mapping: /graphiql
+#  endpoint:
+#    graphql: /graphql
+#  enabled: true
+
+graphiql:
+  mapping: /graphiql
+  endpoint: /graphql
+  enabled: true
+
+
+# 设置端口
+server:
+  port: 8080
