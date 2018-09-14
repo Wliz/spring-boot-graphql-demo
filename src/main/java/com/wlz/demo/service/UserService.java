@@ -1,6 +1,7 @@
 package com.wlz.demo.service;
 
 import com.wlz.demo.domain.User;
+import com.wlz.demo.dto.UserInput;
 import java.util.List;
 
 /**
@@ -15,13 +16,20 @@ public interface UserService extends BaseService {
      */
     List<User> findAllUsers();
 
+//    /**
+//     * 创建用户
+//     * @param userName
+//     * @param phone
+//     * @return
+//     */
+//    User createUser(String userName, String phone);
+
     /**
      * 创建用户
-     * @param userName
-     * @param phone
+     * @param user
      * @return
      */
-    User createUser(String userName, String phone);
+    User createUser(UserInput user);
 
     /**
      * 更新用户

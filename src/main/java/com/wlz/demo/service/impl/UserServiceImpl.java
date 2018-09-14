@@ -2,7 +2,9 @@ package com.wlz.demo.service.impl;
 
 import com.wlz.demo.dao.UserMapper;
 import com.wlz.demo.domain.User;
+import com.wlz.demo.dto.UserInput;
 import com.wlz.demo.service.UserService;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +24,23 @@ public class UserServiceImpl implements UserService {
         return userMapper.findAll();
     }
 
-    @Override
-    public User createUser(String userName, String phone) {
-        User user = new User();
-        user.setUsername(userName);
-        user.setPhone(phone);
-        Long userId = Long.valueOf(userMapper.insert(user));
+//    @Override
+//    public User createUser(String userName, String phone) {
+//        User user = new User();
+//        user.setUsername(userName);
+//        user.setPhone(phone);
+//
+//        Long userId = Long.valueOf(userMapper.insert(user));
+//
+//        return userMapper.findId(userId);
+//    }
 
-        return userMapper.findId(userId);
+    @Override
+    public User createUser(UserInput userInput) {
+        userInput.setCreatedAt(new Date());
+        userInput.setUpdatedAt(new Date());
+        userMapper.insert(userInput);
+        return userInput;
     }
 
     @Override

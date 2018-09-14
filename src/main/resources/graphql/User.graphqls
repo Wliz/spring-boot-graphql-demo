@@ -8,11 +8,11 @@ type Query {
     findAllUsers : [User]
 }
 
-enum status { NORMAL, TEST }
+enum UserStatus { NORAMAL, LOCK, ERASE }
 
 # 增删改
 type Mutation {
-    createUser(userName : String!, phone : String) : User!
+    createUser(input : UserInput!) : User!
     updateUser(id : Long!, userName : String, phone : String) : User!
 }
 
@@ -22,9 +22,10 @@ interface Character{
 
 type User {
 #    id : UUID
+    id : ID
     username : String
     phone : String
-    status : String
+    status : Int
 #    createdAt : String
 #    createdAt(dateFetcher : String = "yyyy-MM-dd") : String
     createdAt : Wlz
@@ -33,5 +34,15 @@ type User {
 #    createdAt : YearMonthDay
 }
 
+input UserInput {
+    username : String!
+    phone : PhoneScalar!
+    cityId : Int!
+    status : Int!
+    companyId : Int!
+}
+
 scalar Wlz
+# 自定义参数验证
+scalar PhoneScalar
 
