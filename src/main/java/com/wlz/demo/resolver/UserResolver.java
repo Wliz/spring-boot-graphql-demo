@@ -25,15 +25,15 @@ public class UserResolver {
         return userService.findAllUsers();
     }
 
-    /**
-     * 创建用户
-     * @param userName
-     * @param phone
-     * @return
-     */
-    User createUser(String userName, String phone) {
-        return userService.createUser(userName, phone);
-    }
+//    /**
+//     * 创建用户
+//     * @param userName
+//     * @param phone
+//     * @return
+//     */
+//    User createUser(String userName, String phone) {
+//        return userService.createUser(userName, phone);
+//    }
 
     /**
      * 更新用户

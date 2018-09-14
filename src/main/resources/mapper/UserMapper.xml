@@ -49,7 +49,7 @@
       where id = #{id, jdbcType=BIGINT}
     </set>
   </update>
-  <insert id="insert" parameterType="com.wlz.demo.domain.User">
+  <insert id="insert" parameterType="com.wlz.demo.domain.User" useGeneratedKeys="true" keyProperty="id">
     insert into user (id, username, phone, 
       city_id, status, created_at, 
       updated_at, company_id)
