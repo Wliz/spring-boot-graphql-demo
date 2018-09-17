@@ -1,5 +1,6 @@
 package com.wlz.demo.domain;
 
+import com.wlz.demo.enumeration.UserStatus;
 import java.util.Date;
 import lombok.Data;
 
@@ -13,7 +14,9 @@ public class User {
 
     private Long cityId;
 
-    private Integer status;
+//    private Integer status;
+
+    private UserStatus status;
 
     private Date createdAt;
 

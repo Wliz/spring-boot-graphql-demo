@@ -25,7 +25,8 @@ type User {
     id : ID
     username : String
     phone : String
-    status : Int
+    status : UserStatus
+#    status : Int
 #    createdAt : String
 #    createdAt(dateFetcher : String = "yyyy-MM-dd") : String
     createdAt : Wlz
@@ -38,7 +39,7 @@ input UserInput {
     username : String!
     phone : PhoneScalar!
     cityId : Int!
-    status : Int!
+    status : UserStatus!
     companyId : Int!
 }
 

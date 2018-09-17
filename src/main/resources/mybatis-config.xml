@@ -48,4 +48,7 @@
         <typeAlias alias="ArrayList" type="java.util.ArrayList" />
         <typeAlias alias="LinkedList" type="java.util.LinkedList" />
     </typeAliases>
+    <typeHandlers>
+        <typeHandler handler="com.wlz.demo.enumeration.EnumMybatisHandler"/>
+    </typeHandlers>
 </configuration>

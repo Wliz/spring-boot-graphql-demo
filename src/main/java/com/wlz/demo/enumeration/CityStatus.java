@@ -6,7 +6,7 @@ package com.wlz.demo.enumeration;
  * @author wlz
  * @date 9/6/18 17:35
  */
-public enum CityStatus implements BaseEnum<Integer> {
+public enum CityStatus implements BaseEnum {
 
     NOARMAL("正常", 1),   // 正常
     INVALID("无效", 0);   // 无效

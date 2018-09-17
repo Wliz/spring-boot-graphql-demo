@@ -6,7 +6,7 @@ package com.wlz.demo.enumeration;
  * @author wlz
  * @date 9/6/18 14:06
  */
-public enum UserStatus implements BaseEnum<Integer> {
+public enum UserStatus implements BaseEnum {
     NORAMAL("正常", 1), // 正常
     LOCK("锁定", 2), // 锁定
     ERASE("删除", 0);// 删除
