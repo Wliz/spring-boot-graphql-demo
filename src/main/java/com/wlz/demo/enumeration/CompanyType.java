@@ -6,7 +6,7 @@ package com.wlz.demo.enumeration;
  * @author wlz
  * @date 9/6/18 17:29
  */
-public enum CompanyType implements BaseEnum<Integer> {
+public enum CompanyType implements BaseEnum {
     SERVICE("服务公司", 1),     //
     OPERATION("运营公司", 2),   //
     AGENT("中介公司", 3),   //

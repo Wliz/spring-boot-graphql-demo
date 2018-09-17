@@ -6,7 +6,7 @@ package com.wlz.demo.enumeration;
  * @author wlz
  * @date 9/6/18 14:40
  */
-public enum CompanyStatus implements BaseEnum<Integer> {
+public enum CompanyStatus implements BaseEnum {
     NORMAL("正常", 1),    // 正常
     LOGOFF("注销", 0);    // 注销
 
