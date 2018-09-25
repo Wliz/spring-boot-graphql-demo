@@ -1,4 +1,4 @@
-package com.wlz.demo.annorations;
+package com.wlz.demo.annotations;
 
 import java.lang.annotation.Annotation;
 import java.lang.annotation.ElementType;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class AnnotationDemo {
     public static void main(String[] args) throws ClassNotFoundException {
-        String classPath = "com.wlz.demo.annorations.Member";
+        String classPath = "com.wlz.demo.annotations.Member";
         String buildSql = createTableSql(classPath);
         System.out.println("路径" + classPath + "构建的create sql 语句是: \n" +
             buildSql);
